@@ -1,12 +1,19 @@
 const logos = [
-  "Pizza Palace",
-  "Sushi Garden",
-  "Taco Fiesta",
-  "The Burger Bar",
-  "Casa Italia",
-  "Dragon Wok",
-  "The Steak House",
-  "Café Bonito",
+  "Chempanadas",
+  "Mercedita",
+  "Dalu",
+  "Extreme",
+  "Jalisco",
+  "Granja Kim",
+  "Lemoztache",
+  "La Camorra",
+  "Galeto",
+  "Arigua Resto Bar",
+  "Il Mostaccio",
+  "Criollo",
+  "Scala Tasty",
+  "Koke",
+  "Billie Burger",
 ];
 
 export default function SocialProof() {
@@ -15,7 +22,7 @@ export default function SocialProof() {
       <p className="text-center text-zinc-500 text-xs uppercase tracking-widest mb-6 px-4">
         Confiado por 20+ locales gastronómicos
       </p>
-      <div className="flex gap-12 animate-[scroll_30s_linear_infinite] whitespace-nowrap">
+      <div className="flex gap-12 animate-[scroll_45s_linear_infinite] whitespace-nowrap">
         {[...logos, ...logos].map((name, i) => (
           <span
             key={i}
