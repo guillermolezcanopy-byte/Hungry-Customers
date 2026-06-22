@@ -18,11 +18,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Results />
         <SocialProof />
         <Problem />
         <Solution />
         <HowItWorks />
-        <Results />
         <Testimonials />
         <Guarantee />
         <Pricing />
