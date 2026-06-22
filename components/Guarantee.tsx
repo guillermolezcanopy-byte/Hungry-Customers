@@ -18,7 +18,7 @@ export default function Guarantee() {
           <h3 className="text-white font-black text-xl mb-4">Esto es lo que garantizamos:</h3>
           <ul className="space-y-3">
             {[
-              "Acceso inmediato a todos los módulos al inscribirte",
+              "Acceso inmediato a todo el material al ingresar al programa",
               "Plantillas, guiones y materiales listos para usar",
               "Verás capturas de clientes nuevos en los primeros 7 días",
               "Si no ves resultados en 30 días — reembolso completo",
@@ -39,7 +39,7 @@ export default function Guarantee() {
         </a>
 
         <p className="text-white/70 text-sm mt-4">
-          Sin riesgo · Garantía 30 días · Acceso inmediato
+          Sin riesgo · Garantía 30 días · Diagnóstico Gratis
         </p>
       </div>
     </section>

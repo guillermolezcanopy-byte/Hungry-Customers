@@ -1,26 +1,26 @@
 const steps = [
   {
     step: "1",
-    title: "Te inscribís hoy",
-    desc: "Completás el checkout seguro y tenés acceso inmediato a todos los módulos del curso.",
+    title: "Agendás tu llamada gratis",
+    desc: "Elegís el día y horario que mejor te convenga para tener una sesión de diagnóstico 1 a 1.",
     time: "Hoy",
   },
   {
     step: "2",
-    title: "Empezás con la Oferta Grand Slam",
-    desc: "El módulo 1 te muestra cómo construir una oferta irresistible para este mes. Es la base de todo.",
+    title: "Diseñamos tu plan a medida",
+    desc: "Analizamos tu local gastronómico y te mostramos exactamente cómo estructurar tu Oferta Grand Slam.",
     time: "Día 1",
   },
   {
     step: "3",
-    title: "Grabás y publicás tu contenido",
-    desc: "Con los guiones, las tomas y la estructura de contenido, publicás tu primera campaña en menos de una semana.",
+    title: "Lanzás tus campañas de ads",
+    desc: "Con nuestros guiones y plantillas de anuncios optimizados, publicás tus campañas en menos de una semana.",
     time: "Día 7",
   },
   {
     step: "4",
-    title: "Las ventas empiezan a llegar",
-    desc: "Con los anuncios activos y el sistema funcionando, empezás a ver resultados medibles antes de los 30 días.",
+    title: "Los clientes empiezan a llegar",
+    desc: "Con el sistema funcionando, empezás a ver resultados medibles y a llenar tu local de forma predecible.",
     time: "Día 30",
   },
 ];
