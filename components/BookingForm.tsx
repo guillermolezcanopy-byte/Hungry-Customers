@@ -32,6 +32,7 @@ export default function BookingForm() {
     problema: "",
     intentos: "",
     compromiso: "",
+    inversion: "",
   });
 
   function handleChange(
@@ -300,6 +301,20 @@ export default function BookingForm() {
                 </select>
               </Field>
 
+              <Field label="Nuestro sistema 'HFC' que garantiza llenar tu local de clientes, tiene una inversión única de 499 USD. ¿Estás en condiciones de invertir si ves una propuesta que encaje con tu negocio?" required>
+                <select
+                  name="inversion"
+                  required
+                  value={form.inversion}
+                  onChange={handleChange}
+                  className={inputClass}
+                >
+                  <option value="" disabled>Seleccioná una opción</option>
+                  <option value="si">Sí, estoy dispuesto</option>
+                  <option value="no">No, no cuento con el capital (No podremos ayudarte)</option>
+                </select>
+              </Field>
+
               <div className="flex gap-3 mt-4">
                 <button
                   type="button"
@@ -310,7 +325,7 @@ export default function BookingForm() {
                 </button>
                 <button
                   type="submit"
-                  disabled={!form.problema || !form.intentos || !form.compromiso || loading}
+                  disabled={!form.problema || !form.intentos || !form.compromiso || !form.inversion || loading}
                   className="cta-pulse flex-[2] bg-[#FF3333] hover:bg-[#CC0000] disabled:opacity-40 disabled:cursor-not-allowed text-white font-black text-lg py-4 rounded-xl transition-all cursor-pointer"
                 >
                   {loading ? "Agendando..." : "AGENDAR MI LLAMADA →"}
