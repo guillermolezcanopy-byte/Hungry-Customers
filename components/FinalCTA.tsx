@@ -34,7 +34,7 @@ export default function FinalCTA() {
         <div className="mt-16 pt-10 border-t border-zinc-800 grid grid-cols-1 sm:grid-cols-3 gap-8">
           {[
             { num: "20+", label: "Locales con el sistema activo" },
-            { num: "176M gs", label: "En ventas generadas" },
+            { num: "$22.5K", label: "En ventas generadas" },
             { num: "30 días", label: "Para ver resultados" },
           ].map(({ num, label }) => (
             <div key={label}>

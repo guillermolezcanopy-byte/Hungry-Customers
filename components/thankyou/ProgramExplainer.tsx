@@ -26,7 +26,7 @@ const modules = [
   {
     num: "05",
     title: "Anuncios que Convierten",
-    tag: "176M gs con 1.9M invertidos",
+    tag: "$22.5K con $250 invertidos",
     desc: "La metodología real que usamos en nuestra agencia. Cómo armar una campaña de bajo presupuesto que genera alto retorno — y cómo escalar cuando encontrás lo que funciona.",
   },
 ];

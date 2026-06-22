@@ -77,14 +77,14 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg sm:text-xl text-zinc-300 leading-relaxed mb-8 max-w-xl mx-auto">
-              Aprende el sistema exacto que usamos para vender <strong className="text-white">176.000.000gs con 1.900.000 invertidos</strong> en 30 días — y replicarlo en tu local con tu celular.
+              Aprende el sistema exacto que usamos para vender <strong className="text-white">$22,500 USD con solo $250 invertidos</strong> en 30 días — y replicarlo en tu local con tu celular.
             </p>
 
             {/* Mini stats */}
             <div className="flex flex-wrap justify-center gap-8 mb-10">
               {[
                 { num: 20, suffix: "+", label: "Locales activos" },
-                { num: 176, suffix: "M gs", label: "En ventas generadas" },
+                { num: 22, suffix: "K USD", label: "En ventas generadas" },
                 { num: 30, suffix: " días", label: "Para ver resultados" },
               ].map(({ num, suffix, label }) => (
                 <div key={label} className="text-center">

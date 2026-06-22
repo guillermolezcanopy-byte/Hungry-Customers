@@ -27,7 +27,7 @@ const pillars = [
     num: "05",
     title: "Anuncios que Convierten",
     tag: "Sin gastar de más",
-    desc: "La metodología que usamos para vender 176.000.000gs con 1.900.000 invertidos en 30 días. Aprendés a lanzar campañas de bajo presupuesto con alto retorno — específicamente para locales gastronómicos.",
+    desc: "La metodología que usamos para vender $22,500 con solo $250 invertidos en 30 días. Aprendés a lanzar campañas de bajo presupuesto con alto retorno — específicamente para locales gastronómicos.",
   },
 ];
 

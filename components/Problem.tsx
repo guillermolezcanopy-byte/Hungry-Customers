@@ -52,7 +52,7 @@ export default function Problem() {
         <div className="mt-12 text-center">
           <div className="inline-block bg-[#FF3333]/10 border border-[#FF3333]/30 rounded-2xl px-8 py-6">
             <p className="text-[#FF3333] font-black text-xl sm:text-2xl">
-              176.000.000gs vendidos con 1.900.000 invertidos
+              $22,500 vendidos con solo $250 invertidos
             </p>
             <p className="text-zinc-400 mt-2">
               en 30 días. Con el sistema correcto, los números cambian.

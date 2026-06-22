@@ -4,7 +4,7 @@ const testimonials = [
     role: "Dueño, Ricci's Italian Kitchen",
     stars: 5,
     text: "En 3 semanas ya tenía 40 clientes nuevos solo con el módulo de oferta. Los guiones son una locura — la gente realmente compra. Pasé de martes vacíos a lleno completo en la semana 6.",
-    revenue: "+28M gs/mes",
+    revenue: "+$3,600/mes",
     avatar: "TR",
   },
   {
@@ -12,7 +12,7 @@ const testimonials = [
     role: "Dueña, Golden Dragon Restaurant",
     stars: 5,
     text: "Era escéptica de gastar en otro curso. Pero esto se pagó solo en la primera semana. Mis reseñas en Google pasaron de 3.4 a 4.7 estrellas en 45 días. Ahora los clientes me eligen a mí.",
-    revenue: "+41M gs/mes",
+    revenue: "+$5,300/mes",
     avatar: "JW",
   },
   {
@@ -20,7 +20,7 @@ const testimonials = [
     role: "Dueño, El Rancho Grill",
     stars: 5,
     text: "Lo que más me sorprendió fue el módulo de tomas. Nunca pensé que con mi celular podía lograr eso. Mis reels ahora tienen 10 veces más alcance y las ventas subieron 180% desde que arrancué.",
-    revenue: "+35M gs/mes",
+    revenue: "+$4,500/mes",
     avatar: "CM",
   },
   {
@@ -28,7 +28,7 @@ const testimonials = [
     role: "Dueña, Seoul Garden",
     stars: 5,
     text: "Probé todo — descuentos en apps, publicidad en redes, volantes. Nada funcionó como este sistema. La estructura de contenido sola ya justifica el precio del curso.",
-    revenue: "+22M gs/mes",
+    revenue: "+$2,800/mes",
     avatar: "SK",
   },
   {
@@ -36,15 +36,15 @@ const testimonials = [
     role: "Dueño, The Smokehouse BBQ",
     stars: 5,
     text: "Mi temporada baja del año pasado fue devastadora. Este año, con el sistema activo, mi 'temporada baja' fue mi mejor trimestre. Es un antes y después total.",
-    revenue: "+53M gs/mes",
+    revenue: "+$6,800/mes",
     avatar: "MT",
   },
   {
     name: "Ana Pereira",
     role: "Dueña, Café São Paulo",
     stars: 5,
-    text: "El módulo de anuncios es oro puro. Con 1.900.000 invertidos generamos 176 millones en ventas. El ROI es algo que nunca había visto antes en mi negocio.",
-    revenue: "+31M gs/mes",
+    text: "El módulo de anuncios es oro puro. Con $250 invertidos generamos $22,500 en ventas. El ROI es algo que nunca había visto antes en mi negocio.",
+    revenue: "+$4,000/mes",
     avatar: "AP",
   },
 ];

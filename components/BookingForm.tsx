@@ -222,11 +222,11 @@ export default function BookingForm() {
                   className={inputClass}
                 >
                   <option value="" disabled>Seleccioná una opción</option>
-                  <option value="menos-10m">Menos de 10M gs/mes</option>
-                  <option value="10-30m">10M – 30M gs/mes</option>
-                  <option value="30-60m">30M – 60M gs/mes</option>
-                  <option value="60-100m">60M – 100M gs/mes</option>
-                  <option value="mas-100m">Más de 100M gs/mes</option>
+                  <option value="menos-1300">Menos de $1,300/mes</option>
+                  <option value="1300-3800">$1,300 – $3,800/mes</option>
+                  <option value="3800-7700">$3,800 – $7,700/mes</option>
+                  <option value="7700-12800">$7,700 – $12,800/mes</option>
+                  <option value="mas-12800">Más de $12,800/mes</option>
                 </select>
               </Field>
 

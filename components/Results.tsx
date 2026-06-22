@@ -1,6 +1,6 @@
 const stats = [
-  { number: "176M gs", label: "En ventas generadas", sub: "en 30 días" },
-  { number: "92x", label: "Retorno sobre inversión", sub: "con 1.9M invertidos" },
+  { number: "$22.5K", label: "En ventas generadas", sub: "en 30 días" },
+  { number: "92x", label: "Retorno sobre inversión", sub: "con $250 invertidos" },
   { number: "4.8★", label: "Calificación promedio", sub: "de nuestros alumnos" },
   { number: "20+", label: "Locales con el sistema activo", sub: "y creciendo" },
 ];
@@ -9,25 +9,25 @@ const caseStudies = [
   {
     name: "Marco's Pizzería",
     location: "Asunción, PY",
-    before: "18M gs/mes",
-    after: "61M gs/mes",
-    result: "+43M gs en 60 días",
+    before: "$2,300/mes",
+    after: "$7,800/mes",
+    result: "+$5,500 en 60 días",
     quote: "Pensé que era demasiado bueno para ser real. No lo era.",
   },
   {
     name: "Sakura Sushi",
     location: "San Lorenzo, PY",
-    before: "22M gs/mes",
-    after: "74M gs/mes",
-    result: "+52M gs en 90 días",
+    before: "$2,800/mes",
+    after: "$9,500/mes",
+    result: "+$6,700 en 90 días",
     quote: "Ahora tengo lista de espera los viernes.",
   },
   {
     name: "Casa del Sol",
     location: "Luque, PY",
-    before: "31M gs/mes",
-    after: "89M gs/mes",
-    result: "+58M gs en 75 días",
+    before: "$4,000/mes",
+    after: "$11,400/mes",
+    result: "+$7,400 en 75 días",
     quote: "La mejor inversión que hice para mi local.",
   },
 ];

@@ -21,20 +21,15 @@ export default function ThankYouHero() {
           Antes de la llamada, mirá este video. Te explica exactamente qué va a pasar, qué preparar, y cómo aprovechar los 20 minutos al máximo.
         </p>
 
-        {/* VSL placeholder */}
+        {/* Thank you video */}
         <div className="relative bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl shadow-[#FF3333]/10 max-w-3xl mx-auto">
-          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-            <div className="absolute inset-0">
-              {/* Replace src with your actual thank-you video URL */}
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-                title="Lo que vas a experimentar en la llamada"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
+          <video
+            className="w-full"
+            src="/video-gracias.MOV"
+            controls
+            playsInline
+            preload="metadata"
+          />
           <div className="bg-[#FF3333] px-4 py-3 text-center">
             <p className="text-white font-black text-sm uppercase tracking-wider">
               ▶ MIRÁ ESTE VIDEO ANTES DE LA LLAMADA — IMPORTANTE

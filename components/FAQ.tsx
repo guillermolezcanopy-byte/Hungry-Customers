@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto necesito invertir en publicidad además del curso?",
-    a: "El módulo de anuncios está diseñado específicamente para presupuestos pequeños. Generamos 176.000.000gs en ventas con solo 1.900.000 invertidos en ads. Empezás con poco y escalás cuando ves resultados.",
+    a: "El módulo de anuncios está diseñado específicamente para presupuestos pequeños. Generamos $22,500 en ventas con solo $250 invertidos en ads. Empezás con poco y escalás cuando ves resultados.",
   },
 ];
 
