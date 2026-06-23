@@ -19,11 +19,11 @@ export default function Home() {
       <main>
         <Hero />
         <Results />
-        {/* <SocialProof /> */}
+        <SocialProof />
         <Problem />
         <Solution />
         <HowItWorks />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Guarantee />
         <Pricing />
         <FAQ />
