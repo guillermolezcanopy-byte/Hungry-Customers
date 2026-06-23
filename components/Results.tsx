@@ -179,7 +179,7 @@ export default function Results() {
           {caseStudies.slice(0, visibleCount).map((study, index) => (
             <div
               key={study.brand}
-              className="relative bg-zinc-900 border border-zinc-800/80 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#FF3333]/40 transition-all duration-300 shadow-xl shadow-black/50 animate-[fadeIn_0.5s_ease-out_forwards]"
+              className="relative bg-gradient-to-br from-zinc-800 via-zinc-850 to-zinc-900 border border-zinc-700 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-zinc-500 hover:scale-[1.01] transition-all duration-300 shadow-xl shadow-black/50 animate-[fadeIn_0.5s_ease-out_forwards]"
             >
               <div>
                 {/* Case counter label (bigger and positioned above the logo picture) */}
@@ -187,7 +187,7 @@ export default function Results() {
                   <span className="text-sm sm:text-base font-black tracking-widest text-[#FF3333] uppercase">
                     CASO {index + 1} DE {caseStudies.length}
                   </span>
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-zinc-400 bg-zinc-800 border border-zinc-700/80 rounded-full px-2.5 py-0.5 inline-block">
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-zinc-300 bg-zinc-900 border border-zinc-850 rounded-full px-2.5 py-0.5 inline-block">
                     {study.tag || "CASO DE ÉXITO"}
                   </span>
                 </div>
@@ -197,14 +197,14 @@ export default function Results() {
                   {renderLogo(study.logo, study.brand)}
                   <div>
                     <h4 className="font-black text-xl text-white tracking-tight">{study.brand}</h4>
-                    <span className="text-zinc-500 text-xs font-bold uppercase tracking-wider mt-1 block">
+                    <span className="text-zinc-400 text-xs font-bold uppercase tracking-wider mt-1 block">
                       {study.metric}
                     </span>
                   </div>
                 </div>
 
                 {/* Main statistics display */}
-                <div className="text-center py-4 bg-black/30 border border-zinc-800/40 rounded-2xl p-4 mb-2">
+                <div className="text-center py-4 bg-black/40 border border-zinc-700/40 rounded-2xl p-4 mb-2">
                   <div className="text-2xl sm:text-3xl font-black text-[#FF3333] tracking-tight mb-3 drop-shadow-[0_4px_12px_rgba(255,51,51,0.15)]">
                     {study.highlight}
                   </div>
@@ -215,7 +215,7 @@ export default function Results() {
               </div>
 
               {/* Card bottom footer */}
-              <div className="flex justify-between items-center text-xs text-zinc-500 pt-4 border-t border-zinc-800/40 mt-4">
+              <div className="flex justify-between items-center text-xs text-zinc-400 pt-4 border-t border-zinc-700/80 mt-4">
                 <span>✓ Caso Verificado</span>
                 <span>Local Gastronómico</span>
               </div>
