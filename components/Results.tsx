@@ -116,13 +116,6 @@ const caseStudies = [
     metric: "Inauguración",
     tag: "LLENO COMPLETO",
   },
-  {
-    isTeaser: true,
-    brand: "+17 LOCALES MÁS",
-    highlight: "Resultados en Vivo",
-    desc: "Por razones de confidencialidad y para proteger los datos financieros de los dueños, las capturas de chats y facturación de otros 17 locales gastronómicos solo las mostramos en vivo en la llamada.",
-    metric: "Teaser",
-  },
 ];
 
 export default function Results() {
@@ -182,8 +175,11 @@ export default function Results() {
   };
 
   return (
-    <section id="resultados" className="py-20 bg-zinc-950 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="resultados" className="py-20 bg-gradient-to-b from-zinc-950 via-[#120202] to-zinc-950 relative overflow-hidden">
+      {/* Background ambient red glow to make it catchy */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF3333]/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-14">
           <span className="text-[#FF3333] font-bold text-sm uppercase tracking-widest">Resultados Reales</span>
@@ -212,6 +208,13 @@ export default function Results() {
         {/* Carousel Container (1 Result Per Row) */}
         <div className="relative max-w-2xl mx-auto px-1 sm:px-4">
           
+          {/* Slider Counter (Bigger and above the card/logo picture) */}
+          <div className="text-center mb-6">
+            <span className="text-xl sm:text-2xl font-black tracking-widest text-[#FF3333] uppercase">
+              Caso {currentIndex + 1} de {caseStudies.length}
+            </span>
+          </div>
+
           {/* Main slider track wrapper */}
           <div 
             className="relative overflow-hidden rounded-3xl bg-zinc-900/40 border border-zinc-800/80 p-6 sm:p-8"
@@ -224,70 +227,44 @@ export default function Results() {
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {caseStudies.map((study, index) => {
-                const isTeaser = study.isTeaser;
-
                 return (
                   <div key={study.brand} className="w-full flex-shrink-0 flex flex-col justify-between min-h-[340px]">
-                    {isTeaser ? (
-                      /* TEASER CARD */
-                      <div className="flex flex-col items-center justify-center text-center h-full py-6 px-4">
-                        <div className="w-16 h-16 rounded-full bg-[#FF3333]/10 border border-[#FF3333]/20 flex items-center justify-center mb-4">
-                          <svg className="w-8 h-8 text-[#FF3333]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                          </svg>
+                    {/* STANDARD CASE STUDY CARD (Direct presentation) */}
+                    <div className="relative w-full h-[340px] bg-zinc-950/80 border border-zinc-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#FF3333]/30 transition-all duration-300">
+                      {/* Header */}
+                      <div className="flex justify-between items-center gap-4">
+                        <div className="flex items-center gap-4">
+                          {renderLogo(study.logo, study.brand)}
+                          <div>
+                            <h4 className="font-black text-lg sm:text-xl text-white tracking-tight leading-none">{study.brand}</h4>
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-[#FF3333] bg-[#FF3333]/10 border border-[#FF3333]/20 rounded-full px-2.5 py-0.5 mt-2 inline-block">
+                              {study.tag || "CASO DE ÉXITO"}
+                            </span>
+                          </div>
                         </div>
-                        <span className="text-[10px] uppercase font-bold tracking-widest text-[#FF3333] bg-[#FF3333]/10 border border-[#FF3333]/20 rounded-full px-3 py-1 mb-4">
+                        <span className="text-zinc-500 text-xs font-bold uppercase tracking-wider hidden sm:inline">
                           {study.metric}
                         </span>
-                        <h3 className="font-black text-2xl text-white tracking-tight mb-3">{study.brand}</h3>
-                        <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-lg mb-6">
-                          {study.desc}
+                      </div>
+
+                      {/* Main statistics display */}
+                      <div className="text-center my-auto py-2">
+                        <div className="text-3xl sm:text-4xl font-black text-[#FF3333] tracking-tight mb-3 drop-shadow-[0_4px_12px_rgba(255,51,51,0.15)]">
+                          {study.highlight}
+                        </div>
+                        <p className="text-zinc-200 text-base sm:text-lg font-bold italic leading-relaxed max-w-xl mx-auto px-4">
+                          &ldquo;{study.desc}&rdquo;
                         </p>
-                        <a
-                          href="/agendar"
-                          className="cta-pulse bg-[#FF3333] hover:bg-[#CC0000] text-white font-black text-sm px-8 py-3.5 rounded-xl transition-all shadow-xl shadow-[#FF3333]/20 active:scale-95 cursor-pointer text-center"
-                        >
-                          AGENDAR LLAMADA Y VER PRUEBAS →
-                        </a>
                       </div>
-                    ) : (
-                      /* STANDARD CASE STUDY CARD (Direct presentation) */
-                      <div className="relative w-full h-[340px] bg-zinc-950/80 border border-zinc-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#FF3333]/30 transition-all duration-300">
-                        {/* Header */}
-                        <div className="flex justify-between items-center gap-4">
-                          <div className="flex items-center gap-4">
-                            {renderLogo(study.logo, study.brand)}
-                            <div>
-                              <h4 className="font-black text-lg sm:text-xl text-white tracking-tight leading-none">{study.brand}</h4>
-                              <span className="text-[10px] uppercase font-bold tracking-widest text-[#FF3333] bg-[#FF3333]/10 border border-[#FF3333]/20 rounded-full px-2.5 py-0.5 mt-2 inline-block">
-                                {study.tag || "CASO DE ÉXITO"}
-                              </span>
-                            </div>
-                          </div>
-                          <span className="text-zinc-500 text-xs font-bold uppercase tracking-wider hidden sm:inline">
-                            {study.metric}
-                          </span>
-                        </div>
 
-                        {/* Main statistics display */}
-                        <div className="text-center my-auto py-2">
-                          <div className="text-3xl sm:text-4xl font-black text-[#FF3333] tracking-tight mb-3 drop-shadow-[0_4px_12px_rgba(255,51,51,0.15)]">
-                            {study.highlight}
-                          </div>
-                          <p className="text-zinc-200 text-base sm:text-lg font-bold italic leading-relaxed max-w-xl mx-auto px-4">
-                            &ldquo;{study.desc}&rdquo;
-                          </p>
-                        </div>
-
-                        {/* Card bottom info */}
-                        <div className="flex justify-between items-center text-xs text-zinc-500 pt-2 border-t border-zinc-900/60">
-                          <span>✓ Caso Verificado</span>
-                          <span className="sm:hidden text-[10px] font-bold text-[#FF3333] uppercase">
-                            {study.metric}
-                          </span>
-                        </div>
+                      {/* Card bottom info */}
+                      <div className="flex justify-between items-center text-xs text-zinc-500 pt-2 border-t border-zinc-900/60">
+                        <span>✓ Caso Verificado</span>
+                        <span className="sm:hidden text-[10px] font-bold text-[#FF3333] uppercase">
+                          {study.metric}
+                        </span>
                       </div>
-                    )}
+                    </div>
                   </div>
                 );
               })}
@@ -316,9 +293,8 @@ export default function Results() {
             </svg>
           </button>
 
-          {/* Slide dots and counter */}
-          <div className="mt-8 flex flex-col items-center gap-4">
-            {/* Dots */}
+          {/* Slide dots */}
+          <div className="mt-6 flex justify-center">
             <div className="flex gap-2">
               {caseStudies.map((_, index) => (
                 <button
@@ -331,42 +307,9 @@ export default function Results() {
                 />
               ))}
             </div>
-
-            {/* Slider Counter */}
-            <span className="text-zinc-500 text-xs font-bold uppercase tracking-widest">
-              Caso {currentIndex + 1} de {caseStudies.length}
-            </span>
           </div>
-        </div>
-
-        {/* Persistent Teaser Banner */}
-        <div className="mt-14 max-w-2xl mx-auto bg-gradient-to-r from-[#FF3333]/10 to-transparent border border-[#FF3333]/20 rounded-2xl p-5 flex items-center justify-between gap-6 flex-col sm:flex-row text-center sm:text-left">
-          <div>
-            <h4 className="text-white font-black text-lg">¿Querés ver más casos?</h4>
-            <p className="text-zinc-400 text-sm mt-1">
-              Tenemos capturas e informes completos de **17 locales gastronómicos más** que mantendremos privados.
-            </p>
-          </div>
-          <a
-            href="/agendar"
-            className="cta-pulse bg-[#FF3333] hover:bg-[#CC0000] text-white font-black text-sm px-6 py-3 rounded-xl transition-all shrink-0 cursor-pointer shadow-lg shadow-[#FF3333]/15 text-center"
-          >
-            VER RESTANTES EN LLAMADA →
-          </a>
         </div>
       </div>
-
-      <style>{`
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        .scrollbar-none::-webkit-scrollbar {
-          display: none;
-        }
-        /* Hide scrollbar for IE, Edge and Firefox */
-        .scrollbar-none {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
-        }
-      `}</style>
     </section>
   );
 }
