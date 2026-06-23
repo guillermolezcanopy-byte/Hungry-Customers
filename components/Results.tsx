@@ -119,41 +119,10 @@ const caseStudies = [
 ];
 
 export default function Results() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(4);
 
-  // Swipe gesture hooks
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
-  const minSwipeDistance = 50;
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-    if (isLeftSwipe) {
-      nextSlide();
-    } else if (isRightSwipe) {
-      prevSlide();
-    }
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % caseStudies.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + caseStudies.length) % caseStudies.length);
+  const showMore = () => {
+    setVisibleCount((prev) => Math.min(prev + 2, caseStudies.length));
   };
 
   const renderLogo = (logo: string | undefined, brand: string) => {
@@ -205,111 +174,80 @@ export default function Results() {
           ))}
         </div>
 
-        {/* Carousel Container (1 Result Per Row) */}
-        <div className="relative max-w-2xl mx-auto px-1 sm:px-4">
-          
-          {/* Slider Counter (Bigger and above the card/logo picture) */}
-          <div className="text-center mb-6">
-            <span className="text-xl sm:text-2xl font-black tracking-widest text-[#FF3333] uppercase">
-              Caso {currentIndex + 1} de {caseStudies.length}
-            </span>
-          </div>
-
-          {/* Main slider track wrapper */}
-          <div 
-            className="relative overflow-hidden rounded-3xl bg-zinc-900/40 border border-zinc-800/80 p-6 sm:p-8"
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
-          >
-            <div 
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        {/* Cases Grid (2 Column Layout) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {caseStudies.slice(0, visibleCount).map((study, index) => (
+            <div
+              key={study.brand}
+              className="relative bg-zinc-900 border border-zinc-800/80 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#FF3333]/40 transition-all duration-300 shadow-xl shadow-black/50 animate-[fadeIn_0.5s_ease-out_forwards]"
             >
-              {caseStudies.map((study, index) => {
-                return (
-                  <div key={study.brand} className="w-full flex-shrink-0 flex flex-col justify-between min-h-[340px]">
-                    {/* STANDARD CASE STUDY CARD (Direct presentation) */}
-                    <div className="relative w-full h-[340px] bg-zinc-950/80 border border-zinc-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#FF3333]/30 transition-all duration-300">
-                      {/* Header */}
-                      <div className="flex justify-between items-center gap-4">
-                        <div className="flex items-center gap-4">
-                          {renderLogo(study.logo, study.brand)}
-                          <div>
-                            <h4 className="font-black text-lg sm:text-xl text-white tracking-tight leading-none">{study.brand}</h4>
-                            <span className="text-[10px] uppercase font-bold tracking-widest text-[#FF3333] bg-[#FF3333]/10 border border-[#FF3333]/20 rounded-full px-2.5 py-0.5 mt-2 inline-block">
-                              {study.tag || "CASO DE ÉXITO"}
-                            </span>
-                          </div>
-                        </div>
-                        <span className="text-zinc-500 text-xs font-bold uppercase tracking-wider hidden sm:inline">
-                          {study.metric}
-                        </span>
-                      </div>
+              <div>
+                {/* Case counter label (bigger and positioned above the logo picture) */}
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-sm sm:text-base font-black tracking-widest text-[#FF3333] uppercase">
+                    CASO {index + 1} DE {caseStudies.length}
+                  </span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-zinc-400 bg-zinc-800 border border-zinc-700/80 rounded-full px-2.5 py-0.5 inline-block">
+                    {study.tag || "CASO DE ÉXITO"}
+                  </span>
+                </div>
 
-                      {/* Main statistics display */}
-                      <div className="text-center my-auto py-2">
-                        <div className="text-3xl sm:text-4xl font-black text-[#FF3333] tracking-tight mb-3 drop-shadow-[0_4px_12px_rgba(255,51,51,0.15)]">
-                          {study.highlight}
-                        </div>
-                        <p className="text-zinc-200 text-base sm:text-lg font-bold italic leading-relaxed max-w-xl mx-auto px-4">
-                          &ldquo;{study.desc}&rdquo;
-                        </p>
-                      </div>
-
-                      {/* Card bottom info */}
-                      <div className="flex justify-between items-center text-xs text-zinc-500 pt-2 border-t border-zinc-900/60">
-                        <span>✓ Caso Verificado</span>
-                        <span className="sm:hidden text-[10px] font-bold text-[#FF3333] uppercase">
-                          {study.metric}
-                        </span>
-                      </div>
-                    </div>
+                {/* Logo & Brand Header info */}
+                <div className="flex items-center gap-4 mb-6">
+                  {renderLogo(study.logo, study.brand)}
+                  <div>
+                    <h4 className="font-black text-xl text-white tracking-tight">{study.brand}</h4>
+                    <span className="text-zinc-500 text-xs font-bold uppercase tracking-wider mt-1 block">
+                      {study.metric}
+                    </span>
                   </div>
-                );
-              })}
+                </div>
+
+                {/* Main statistics display */}
+                <div className="text-center py-4 bg-black/30 border border-zinc-800/40 rounded-2xl p-4 mb-2">
+                  <div className="text-2xl sm:text-3xl font-black text-[#FF3333] tracking-tight mb-3 drop-shadow-[0_4px_12px_rgba(255,51,51,0.15)]">
+                    {study.highlight}
+                  </div>
+                  <p className="text-zinc-200 text-sm sm:text-base font-bold italic leading-relaxed max-w-xl mx-auto">
+                    &ldquo;{study.desc}&rdquo;
+                  </p>
+                </div>
+              </div>
+
+              {/* Card bottom footer */}
+              <div className="flex justify-between items-center text-xs text-zinc-500 pt-4 border-t border-zinc-800/40 mt-4">
+                <span>✓ Caso Verificado</span>
+                <span>Local Gastronómico</span>
+              </div>
             </div>
-          </div>
-
-          {/* Left Arrow Button */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-[-20px] sm:left-[-30px] top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-[#FF3333]/50 transition-all cursor-pointer shadow-xl active:scale-95 z-20"
-            aria-label="Anterior"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          {/* Right Arrow Button */}
-          <button
-            onClick={nextSlide}
-            className="absolute right-[-20px] sm:right-[-30px] top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-[#FF3333]/50 transition-all cursor-pointer shadow-xl active:scale-95 z-20"
-            aria-label="Siguiente"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* Slide dots */}
-          <div className="mt-6 flex justify-center">
-            <div className="flex gap-2">
-              {caseStudies.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? "w-8 bg-[#FF3333]" : "w-2 bg-zinc-800 hover:bg-zinc-700"
-                  }`}
-                  aria-label={`Ir al caso ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
+
+        {/* Load More Button */}
+        {visibleCount < caseStudies.length && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={showMore}
+              className="bg-[#FF3333] hover:bg-[#CC0000] text-white font-black text-sm uppercase tracking-wider px-10 py-4 rounded-xl transition-all shadow-xl shadow-[#FF3333]/15 active:scale-95 cursor-pointer"
+            >
+              VER MÁS RESULTADOS ↓
+            </button>
+          </div>
+        )}
       </div>
+
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(12px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </section>
   );
 }
