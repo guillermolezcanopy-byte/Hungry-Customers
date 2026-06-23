@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const stats = [
   { number: "$22.5K", label: "En ventas generadas", sub: "en 30 días" },
@@ -127,7 +127,6 @@ const caseStudies = [
 
 export default function Results() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [revealedCards, setRevealedCards] = useState<Record<number, boolean>>({});
 
   // Swipe gesture hooks
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -164,23 +163,19 @@ export default function Results() {
     setCurrentIndex((prev) => (prev - 1 + caseStudies.length) % caseStudies.length);
   };
 
-  const toggleReveal = (index: number) => {
-    setRevealedCards((prev) => ({ ...prev, [index]: !prev[index] }));
-  };
-
   const renderLogo = (logo: string | undefined, brand: string) => {
     if (logo) {
       return (
         <img
           src={logo}
           alt={brand}
-          className="w-14 h-14 rounded-full object-cover border border-zinc-700 shadow-md shrink-0 animate-fade-in"
+          className="w-14 h-14 rounded-full object-cover border border-zinc-700 shadow-md shrink-0"
         />
       );
     }
     const initials = brand.split(" ").map((w) => w[0]).join("").slice(0, 2);
     return (
-      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#FF3333] to-zinc-950 border border-[#FF3333]/30 flex items-center justify-center text-white font-black text-lg shadow-md shrink-0 uppercase animate-fade-in">
+      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#FF3333] to-zinc-950 border border-[#FF3333]/30 flex items-center justify-center text-white font-black text-lg shadow-md shrink-0 uppercase">
         {initials}
       </div>
     );
@@ -230,118 +225,67 @@ export default function Results() {
             >
               {caseStudies.map((study, index) => {
                 const isTeaser = study.isTeaser;
-                const isRevealed = !!revealedCards[index];
 
                 return (
-                  <div key={study.brand} className="w-full flex-shrink-0 flex flex-col justify-between min-h-[380px]">
+                  <div key={study.brand} className="w-full flex-shrink-0 flex flex-col justify-between min-h-[340px]">
                     {isTeaser ? (
                       /* TEASER CARD */
-                      <div className="flex flex-col items-center justify-center text-center h-full py-10 px-4">
-                        <div className="w-20 h-20 rounded-full bg-[#FF3333]/10 border border-[#FF3333]/20 flex items-center justify-center mb-6">
-                          <svg className="w-10 h-10 text-[#FF3333]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="flex flex-col items-center justify-center text-center h-full py-6 px-4">
+                        <div className="w-16 h-16 rounded-full bg-[#FF3333]/10 border border-[#FF3333]/20 flex items-center justify-center mb-4">
+                          <svg className="w-8 h-8 text-[#FF3333]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                           </svg>
                         </div>
                         <span className="text-[10px] uppercase font-bold tracking-widest text-[#FF3333] bg-[#FF3333]/10 border border-[#FF3333]/20 rounded-full px-3 py-1 mb-4">
                           {study.metric}
                         </span>
-                        <h3 className="font-black text-3xl text-white tracking-tight mb-4">{study.brand}</h3>
-                        <p className="text-zinc-300 text-base leading-relaxed max-w-lg mb-8">
+                        <h3 className="font-black text-2xl text-white tracking-tight mb-3">{study.brand}</h3>
+                        <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-lg mb-6">
                           {study.desc}
                         </p>
                         <a
                           href="/agendar"
-                          className="cta-pulse bg-[#FF3333] hover:bg-[#CC0000] text-white font-black text-lg px-10 py-4 rounded-xl transition-all shadow-xl shadow-[#FF3333]/20 active:scale-95 cursor-pointer"
+                          className="cta-pulse bg-[#FF3333] hover:bg-[#CC0000] text-white font-black text-sm px-8 py-3.5 rounded-xl transition-all shadow-xl shadow-[#FF3333]/20 active:scale-95 cursor-pointer text-center"
                         >
                           AGENDAR LLAMADA Y VER PRUEBAS →
                         </a>
                       </div>
                     ) : (
-                      /* STANDARD CASE STUDY CARD (Curtain covers whole card body) */
-                      <div 
-                        className="relative w-full h-[380px] bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden cursor-pointer group"
-                        onClick={() => !isRevealed && toggleReveal(index)}
-                      >
-                        {/* REVEALED CONTENT (Becomes visible when curtains slide open) */}
-                        <div className="absolute inset-0 flex flex-col justify-between p-8 bg-zinc-950">
-                          {/* Header */}
-                          <div className="flex justify-between items-center">
-                            <div className="flex items-center gap-4">
-                              {renderLogo(study.logo, study.brand)}
-                              <div>
-                                <h4 className="font-black text-xl text-white tracking-tight">{study.brand}</h4>
-                                <span className="text-[10px] uppercase font-bold tracking-widest text-[#FF3333] bg-[#FF3333]/10 border border-[#FF3333]/20 rounded-full px-2.5 py-0.5 mt-1 inline-block">
-                                  {study.tag || "CASO DE ÉXITO"}
-                                </span>
-                              </div>
+                      /* STANDARD CASE STUDY CARD (Direct presentation) */
+                      <div className="relative w-full h-[340px] bg-zinc-950/80 border border-zinc-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#FF3333]/30 transition-all duration-300">
+                        {/* Header */}
+                        <div className="flex justify-between items-center gap-4">
+                          <div className="flex items-center gap-4">
+                            {renderLogo(study.logo, study.brand)}
+                            <div>
+                              <h4 className="font-black text-lg sm:text-xl text-white tracking-tight leading-none">{study.brand}</h4>
+                              <span className="text-[10px] uppercase font-bold tracking-widest text-[#FF3333] bg-[#FF3333]/10 border border-[#FF3333]/20 rounded-full px-2.5 py-0.5 mt-2 inline-block">
+                                {study.tag || "CASO DE ÉXITO"}
+                              </span>
                             </div>
-                            <span className="text-zinc-500 text-xs font-bold uppercase tracking-wider">
-                              {study.metric}
-                            </span>
                           </div>
-
-                          {/* Main big numbers */}
-                          <div className="my-auto py-4 text-center">
-                            <div className="text-4xl sm:text-5xl font-black text-[#FF3333] tracking-tight mb-4 drop-shadow-[0_4px_12px_rgba(255,51,51,0.15)]">
-                              {study.highlight}
-                            </div>
-                            <p className="text-zinc-200 text-base sm:text-lg font-bold italic leading-relaxed max-w-xl mx-auto px-4">
-                              &ldquo;{study.desc}&rdquo;
-                            </p>
-                          </div>
-
-                          {/* Footer action */}
-                          <div className="flex justify-end">
-                            <button
-                              onClick={(e) => {
-                                  e.stopPropagation();
-                                  toggleReveal(index);
-                              }}
-                              className="bg-zinc-900/90 hover:bg-zinc-850 text-white border border-zinc-800 rounded-xl px-4 py-2 text-xs font-bold transition-all shadow-md active:scale-95 cursor-pointer flex items-center gap-1.5"
-                            >
-                              <span>🔒 Ocultar resultado</span>
-                            </button>
-                          </div>
+                          <span className="text-zinc-500 text-xs font-bold uppercase tracking-wider hidden sm:inline">
+                            {study.metric}
+                          </span>
                         </div>
 
-                        {/* CURTAIN PANELS */}
-                        {/* Left curtain door */}
-                        <div 
-                          className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-zinc-900 to-zinc-950 border-r border-zinc-800 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] z-10 origin-left"
-                          style={{ transform: isRevealed ? 'translateX(-100%)' : 'translateX(0)' }}
-                        />
-                        {/* Right curtain door */}
-                        <div 
-                          className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-zinc-900 to-zinc-950 border-l border-zinc-800 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] z-10 origin-right"
-                          style={{ transform: isRevealed ? 'translateX(100%)' : 'translateX(0)' }}
-                        />
-
-                        {/* CLOSED STATE COVER (Layered on top of curtains, centered) */}
-                        {!isRevealed && (
-                          <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-15 select-none pointer-events-none">
-                            {/* Centered Logo on Closed Curtain */}
-                            <div className="mb-4 transform group-hover:scale-105 transition-transform duration-300">
-                              {renderLogo(study.logo, study.brand)}
-                            </div>
-                            
-                            <h3 className="font-black text-2xl text-white tracking-tight mb-2 uppercase tracking-wide">
-                              {study.brand}
-                            </h3>
-                            <p className="text-zinc-500 text-xs uppercase tracking-widest font-bold mb-6">
-                              Hacé clic para revelar el resultado
-                            </p>
-
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                toggleReveal(index);
-                              }}
-                              className="pointer-events-auto bg-[#FF3333] hover:bg-[#CC0000] text-white font-black text-sm px-6 py-3 rounded-xl transition-all shadow-lg shadow-[#FF3333]/25 active:scale-95 cursor-pointer flex items-center gap-2"
-                            >
-                              <span>🔓 VER RESULTADO</span>
-                            </button>
+                        {/* Main statistics display */}
+                        <div className="text-center my-auto py-2">
+                          <div className="text-3xl sm:text-4xl font-black text-[#FF3333] tracking-tight mb-3 drop-shadow-[0_4px_12px_rgba(255,51,51,0.15)]">
+                            {study.highlight}
                           </div>
-                        )}
+                          <p className="text-zinc-200 text-base sm:text-lg font-bold italic leading-relaxed max-w-xl mx-auto px-4">
+                            &ldquo;{study.desc}&rdquo;
+                          </p>
+                        </div>
+
+                        {/* Card bottom info */}
+                        <div className="flex justify-between items-center text-xs text-zinc-500 pt-2 border-t border-zinc-900/60">
+                          <span>✓ Caso Verificado</span>
+                          <span className="sm:hidden text-[10px] font-bold text-[#FF3333] uppercase">
+                            {study.metric}
+                          </span>
+                        </div>
                       </div>
                     )}
                   </div>
