@@ -16,120 +16,105 @@ const caseStudies = [
     highlight: "2,100+ Empanadas al día",
     desc: "Con Chempanadas pasamos de 5 docenas al día a más de 2,100 empanadas al día.",
     metric: "Crecimiento Masivo",
-    proofSrc: "/proof-1.jpeg",
-    isBlur: false,
+    tag: "VENTAS DIARIAS",
   },
   {
     brand: "MERCEDITA",
     highlight: "+200% Facturación",
     desc: "Con Merceditas aumentamos en un 200% la facturación.",
     metric: "Ventas Triplicadas",
-    proofSrc: "/proof-2.jpeg",
-    isBlur: false,
+    tag: "CRECIMIENTO",
   },
   {
     brand: "DALU",
     highlight: "+200% Facturación",
     desc: "Con Dalu aumentamos en un 200% la facturación.",
     metric: "Ventas Triplicadas",
-    proofSrc: "/proof-1.jpeg",
-    isBlur: true,
+    tag: "CRECIMIENTO",
   },
   {
     brand: "EXTREME HOUSE",
     highlight: "Récord Diario de Ventas",
     desc: "Con Extreme House posicionamos la marca en redes sociales y batimos récord diario.",
     metric: "Marca & Récord",
-    proofSrc: "/proof-2.jpeg",
-    isBlur: true,
+    tag: "POSICIONAMIENTO",
   },
   {
     brand: "JALISCO",
     highlight: "+100% Facturación",
     desc: "Con Jalisco aumentamos en un 100% su facturación.",
     metric: "Ventas Duplicadas",
-    proofSrc: "/proof-1.jpeg",
-    isBlur: true,
+    tag: "CRECIMIENTO",
   },
   {
     brand: "GRANJA KIM",
     highlight: "+100% Facturación",
     desc: "Con Granja Kim aumentamos en un 100% su facturación.",
     metric: "Ventas Duplicadas",
-    proofSrc: "/proof-2.jpeg",
-    isBlur: true,
+    tag: "CRECIMIENTO",
   },
   {
     brand: "LEMOZTACHE",
     highlight: "+400% Facturación",
     desc: "Con Lemoztache aumentamos en un 400% su facturación.",
     metric: "Ventas x5",
-    proofSrc: "/proof-1.jpeg",
-    isBlur: true,
+    tag: "CRECIMIENTO",
   },
   {
     brand: "LA CAMORRA",
     highlight: "100+ Pizzas al día",
     desc: "Con La Camorra pasamos de 9 pizzas al día a más de 100.",
     metric: "Crecimiento Masivo",
-    proofSrc: "/proof-2.jpeg",
-    isBlur: true,
+    tag: "VENTAS DIARIAS",
   },
   {
     brand: "GALETO",
     highlight: "+300% Facturación",
     desc: "Con Galeto aumentamos en un 300% la facturación.",
     metric: "Ventas Cuadruplicadas",
-    proofSrc: "/proof-1.jpeg",
-    isBlur: true,
+    tag: "CRECIMIENTO",
   },
   {
     brand: "ARIGUA RESTO BAR",
     highlight: "+1500% Facturación",
     desc: "Con Aragua aumentamos en un 1,500% la facturación.",
     metric: "Crecimiento Histórico",
-    proofSrc: "/proof-2.jpeg",
-    isBlur: true,
+    tag: "CRECIMIENTO",
   },
   {
     brand: "IL MOSTACCIO",
     highlight: "+400% & Sucursal Nueva",
     desc: "Con Il Mostaccio aumentamos en un 400% y abrió una nueva sucursal.",
     metric: "Expansión de Marca",
-    proofSrc: "/proof-1.jpeg",
-    isBlur: true,
+    tag: "CRECIMIENTO & EXPANSIÓN",
   },
   {
     brand: "CRIOLLO",
     highlight: "Ventas en Alza",
     desc: "Con Criollo reestructuramos el menú y optimizamos las ventas semanales.",
     metric: "Rentabilidad",
-    proofSrc: "/proof-2.jpeg",
-    isBlur: true,
+    tag: "OPTIMIZACIÓN",
   },
   {
     brand: "SCALA TASTY",
     highlight: "Atracción de Clientes",
     desc: "Con Scala Tasty lanzamos campañas y superamos el promedio mensual de visitas.",
     metric: "Tráfico Local",
-    proofSrc: "/proof-1.jpeg",
-    isBlur: true,
+    tag: "TRÁFICO",
   },
   {
     brand: "KOKE",
     highlight: "Consolidación Digital",
     desc: "Con Koke posicionamos el delivery en las principales zonas de la ciudad.",
     metric: "Delivery",
-    proofSrc: "/proof-2.jpeg",
-    isBlur: true,
+    tag: "DELIVERY",
   },
   {
     brand: "BILLIE BURGER",
     highlight: "Lanzamiento Exitoso",
     desc: "Con Billie Burger implementamos el embudo de ofertas y llenamos el salón en la inauguración.",
     metric: "Inauguración",
-    proofSrc: "/proof-1.jpeg",
-    isBlur: true,
+    tag: "LLENO COMPLETO",
   },
   {
     isTeaser: true,
@@ -189,13 +174,13 @@ export default function Results() {
         <img
           src={logo}
           alt={brand}
-          className="w-14 h-14 rounded-full object-cover border border-zinc-700 shadow-md shrink-0"
+          className="w-14 h-14 rounded-full object-cover border border-zinc-700 shadow-md shrink-0 animate-fade-in"
         />
       );
     }
     const initials = brand.split(" ").map((w) => w[0]).join("").slice(0, 2);
     return (
-      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#FF3333] to-zinc-950 border border-[#FF3333]/30 flex items-center justify-center text-white font-black text-lg shadow-md shrink-0 uppercase">
+      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#FF3333] to-zinc-950 border border-[#FF3333]/30 flex items-center justify-center text-white font-black text-lg shadow-md shrink-0 uppercase animate-fade-in">
         {initials}
       </div>
     );
@@ -230,7 +215,7 @@ export default function Results() {
         </div>
 
         {/* Carousel Container (1 Result Per Row) */}
-        <div className="relative max-w-3xl mx-auto px-1 sm:px-4">
+        <div className="relative max-w-2xl mx-auto px-1 sm:px-4">
           
           {/* Main slider track wrapper */}
           <div 
@@ -248,7 +233,7 @@ export default function Results() {
                 const isRevealed = !!revealedCards[index];
 
                 return (
-                  <div key={study.brand} className="w-full flex-shrink-0 flex flex-col justify-between min-h-[500px]">
+                  <div key={study.brand} className="w-full flex-shrink-0 flex flex-col justify-between min-h-[380px]">
                     {isTeaser ? (
                       /* TEASER CARD */
                       <div className="flex flex-col items-center justify-center text-center h-full py-10 px-4">
@@ -272,103 +257,91 @@ export default function Results() {
                         </a>
                       </div>
                     ) : (
-                      /* STANDARD CASE STUDY CARD */
-                      <div className="space-y-6">
-                        {/* Header info */}
-                        <div className="flex justify-between items-center">
-                          <div className="flex items-center gap-4">
-                            {renderLogo(study.logo, study.brand)}
-                            <div>
-                              <h3 className="font-black text-xl text-white tracking-tight">{study.brand}</h3>
-                              <span className="text-[10px] uppercase font-bold tracking-widest text-[#FF3333] bg-[#FF3333]/10 border border-[#FF3333]/20 rounded-full px-2.5 py-0.5 mt-1 inline-block">
-                                {study.metric}
-                              </span>
+                      /* STANDARD CASE STUDY CARD (Curtain covers whole card body) */
+                      <div 
+                        className="relative w-full h-[380px] bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden cursor-pointer group"
+                        onClick={() => !isRevealed && toggleReveal(index)}
+                      >
+                        {/* REVEALED CONTENT (Becomes visible when curtains slide open) */}
+                        <div className="absolute inset-0 flex flex-col justify-between p-8 bg-zinc-950">
+                          {/* Header */}
+                          <div className="flex justify-between items-center">
+                            <div className="flex items-center gap-4">
+                              {renderLogo(study.logo, study.brand)}
+                              <div>
+                                <h4 className="font-black text-xl text-white tracking-tight">{study.brand}</h4>
+                                <span className="text-[10px] uppercase font-bold tracking-widest text-[#FF3333] bg-[#FF3333]/10 border border-[#FF3333]/20 rounded-full px-2.5 py-0.5 mt-1 inline-block">
+                                  {study.tag || "CASO DE ÉXITO"}
+                                </span>
+                              </div>
                             </div>
+                            <span className="text-zinc-500 text-xs font-bold uppercase tracking-wider">
+                              {study.metric}
+                            </span>
                           </div>
-                          <span className="text-[#FF3333] font-black text-lg sm:text-xl bg-[#FF3333]/5 border border-[#FF3333]/20 rounded-xl px-4 py-2 shrink-0">
-                            {study.highlight}
-                          </span>
+
+                          {/* Main big numbers */}
+                          <div className="my-auto py-4 text-center">
+                            <div className="text-4xl sm:text-5xl font-black text-[#FF3333] tracking-tight mb-4 drop-shadow-[0_4px_12px_rgba(255,51,51,0.15)]">
+                              {study.highlight}
+                            </div>
+                            <p className="text-zinc-200 text-base sm:text-lg font-bold italic leading-relaxed max-w-xl mx-auto px-4">
+                              &ldquo;{study.desc}&rdquo;
+                            </p>
+                          </div>
+
+                          {/* Footer action */}
+                          <div className="flex justify-end">
+                            <button
+                              onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleReveal(index);
+                              }}
+                              className="bg-zinc-900/90 hover:bg-zinc-850 text-white border border-zinc-800 rounded-xl px-4 py-2 text-xs font-bold transition-all shadow-md active:scale-95 cursor-pointer flex items-center gap-1.5"
+                            >
+                              <span>🔒 Ocultar resultado</span>
+                            </button>
+                          </div>
                         </div>
 
-                        {/* Testimonial Quote */}
-                        <blockquote className="text-lg sm:text-xl font-bold text-zinc-200 italic leading-relaxed border-l-2 border-[#FF3333] pl-4">
-                          &ldquo;{study.desc}&rdquo;
-                        </blockquote>
-
-                        {/* Curtain Proof Component */}
+                        {/* CURTAIN PANELS */}
+                        {/* Left curtain door */}
                         <div 
-                          className="relative w-full h-[320px] sm:h-[420px] bg-black rounded-2xl border border-zinc-800 overflow-hidden group cursor-pointer"
-                          onClick={() => !isRevealed && toggleReveal(index)}
-                        >
-                          {/* Revealed Content (Screenshot) */}
-                          <div className="absolute inset-0 flex items-center justify-center bg-zinc-950">
-                            <img
-                              src={study.proofSrc}
-                              alt={`Captura de prueba para ${study.brand}`}
-                              className={`w-full h-full object-contain transition-all duration-500 ${study.isBlur ? 'blur-lg opacity-30 select-none pointer-events-none' : ''}`}
-                            />
-                            {study.isBlur && (
-                              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/50 backdrop-blur-xs z-10">
-                                <svg className="w-10 h-10 text-[#FF3333] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                </svg>
-                                <h4 className="text-white font-black text-lg mb-1">Prueba Protegida</h4>
-                                <p className="text-zinc-400 text-xs max-w-xs leading-relaxed">
-                                  Por confidencialidad de este local, mostramos la captura de facturación completa y real en nuestra llamada de diagnóstico.
-                                </p>
-                              </div>
-                            )}
-                            
-                            {/* Ocultar button overlay */}
-                            {isRevealed && (
-                              <button 
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  toggleReveal(index);
-                                }}
-                                className="absolute bottom-4 right-4 bg-zinc-900/90 hover:bg-zinc-800 text-white border border-zinc-700/80 rounded-full px-4 py-2 text-xs font-bold transition-all shadow-lg active:scale-95 cursor-pointer z-20 flex items-center gap-1.5"
-                              >
-                                <span>🔒 Ocultar prueba</span>
-                              </button>
-                            )}
-                          </div>
+                          className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-zinc-900 to-zinc-950 border-r border-zinc-800 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] z-10 origin-left"
+                          style={{ transform: isRevealed ? 'translateX(-100%)' : 'translateX(0)' }}
+                        />
+                        {/* Right curtain door */}
+                        <div 
+                          className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-zinc-900 to-zinc-950 border-l border-zinc-800 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] z-10 origin-right"
+                          style={{ transform: isRevealed ? 'translateX(100%)' : 'translateX(0)' }}
+                        />
 
-                          {/* Curtain Left Panel */}
-                          <div 
-                            className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-zinc-900 to-zinc-950 border-r border-zinc-800/80 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] z-10 origin-left"
-                            style={{ transform: isRevealed ? 'translateX(-100%)' : 'translateX(0)' }}
-                          />
-                          {/* Curtain Right Panel */}
-                          <div 
-                            className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-zinc-900 to-zinc-950 border-l border-zinc-800/80 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] z-10 origin-right"
-                            style={{ transform: isRevealed ? 'translateX(100%)' : 'translateX(0)' }}
-                          />
-
-                          {/* Closed curtain trigger layout */}
-                          {!isRevealed && (
-                            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-15 select-none pointer-events-none">
-                              <div className="w-16 h-16 rounded-full bg-[#FF3333]/15 border border-[#FF3333]/30 flex items-center justify-center mb-4 animate-pulse">
-                                <svg className="w-8 h-8 text-[#FF3333]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                </svg>
-                              </div>
-                              <h4 className="text-white font-black text-lg mb-2">Comprobante Real de Ventas</h4>
-                              <p className="text-zinc-400 text-sm max-w-sm mb-5 leading-relaxed">
-                                Hacé clic abajo para abrir la cortina y ver la prueba real de este caso.
-                              </p>
-                              <button 
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  toggleReveal(index);
-                                }}
-                                className="pointer-events-auto bg-[#FF3333] hover:bg-[#CC0000] text-white font-black text-sm px-6 py-3 rounded-xl transition-all shadow-lg shadow-[#FF3333]/20 active:scale-95 cursor-pointer flex items-center gap-2"
-                              >
-                                <span>🔓 REVELAR PRUEBA REAL</span>
-                              </button>
+                        {/* CLOSED STATE COVER (Layered on top of curtains, centered) */}
+                        {!isRevealed && (
+                          <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-15 select-none pointer-events-none">
+                            {/* Centered Logo on Closed Curtain */}
+                            <div className="mb-4 transform group-hover:scale-105 transition-transform duration-300">
+                              {renderLogo(study.logo, study.brand)}
                             </div>
-                          )}
-                        </div>
+                            
+                            <h3 className="font-black text-2xl text-white tracking-tight mb-2 uppercase tracking-wide">
+                              {study.brand}
+                            </h3>
+                            <p className="text-zinc-500 text-xs uppercase tracking-widest font-bold mb-6">
+                              Hacé clic para revelar el resultado
+                            </p>
+
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleReveal(index);
+                              }}
+                              className="pointer-events-auto bg-[#FF3333] hover:bg-[#CC0000] text-white font-black text-sm px-6 py-3 rounded-xl transition-all shadow-lg shadow-[#FF3333]/25 active:scale-95 cursor-pointer flex items-center gap-2"
+                            >
+                              <span>🔓 VER RESULTADO</span>
+                            </button>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
